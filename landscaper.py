@@ -29,3 +29,21 @@ def win():
         print("win")
         return True
     return False
+
+## building the loop
+while (True):
+    
+    i=input("[1] cut grass [2] check stats [3] updrade [4] quit")
+    i==int(i)
+    if (i==1):
+        cut_grass()
+    if (i==2):
+        check_stats()
+    if (i==3):
+        upgrade()
+    if (i==4):
+        print("quit game")
+        break
+    if (win()):
+        break
+    

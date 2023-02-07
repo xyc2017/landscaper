@@ -2,7 +2,10 @@ landscaper = {"money":0, "tool":0}
 
 tools=[
     {"name":"teeth", "earning": 1, "cost":0},
-    {"name":"rusty scissors", "earning": 5, "cost":5}
+    {"name":"rusty scissors", "earning": 5, "cost":5},
+    {"name":"old timely push lawnmower", "earning":50, "cost":25},
+    {"name":"battery-powered lawnmower", "earning":100, "cost": 250},
+    {"name":"starving students", "earning":250, "cost":500}
 ]
 
 def cut_grass():
@@ -12,20 +15,29 @@ def cut_grass():
 
 def stats():
     tool=tools[landscaper["tool"]]
+    if (landscaper["money"]==5):
+        print("you can buy scissors")
+    if (landscaper["money"]==25):
+        print("you can buy old timely push lawnmower")
+    if (landscaper["money"]==250):
+        print("you can buy a fancy battery-powered lawnmower")
+    if (landscaper["money"]==500):
+        print("you can hring a team")
     print(f"You have {landscaper['money']} and are using a {tool['name']}")
     
 def upgrade():
     next_tool=tools[landscaper["tool"]+1]
-    if (next_tool==0):
+    if (next_tool==None):
         print("no more tool")
         return 0
     if (landscaper["money"]<next_tool["cost"]):
         print("not enough to upgrade")
-        landscaper["money"] -=next_tool("cost")
+        landscaper["money"] -=next_tool["cost"]
         landscaper["tool"] +=1
+    print(f"You have upgraded to {next_tool}")
         
 def win():
-    if(landscaper["tool"]==1 and landscaper["money"]==100):
+    if(landscaper["tool"]==4 and landscaper["money"]==1000):
         print("win")
         return True
     return False
@@ -34,11 +46,11 @@ def win():
 while (True):
     
     i=input("[1] cut grass [2] check stats [3] updrade [4] quit")
-    i==int(i)
+    i=int(i)
     if (i==1):
         cut_grass()
     if (i==2):
-        check_stats()
+        stats()
     if (i==3):
         upgrade()
     if (i==4):

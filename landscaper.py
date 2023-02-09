@@ -15,14 +15,14 @@ def cut_grass():
 
 def stats():
     tool=tools[landscaper["tool"]]
-    if (landscaper["money"]==5):
+    if (landscaper["money"]>=5 and landscaper["money"]<25):
         print("you can buy scissors")
-    if (landscaper["money"]==25):
+    if (landscaper["money"]>=25 and landscaper["money"]<250):
         print("you can buy old timely push lawnmower")
-    if (landscaper["money"]==250):
+    if (landscaper["money"]>=250 and landscaper["money"]<500):
         print("you can buy a fancy battery-powered lawnmower")
-    if (landscaper["money"]==500):
-        print("you can hring a team")
+    if (landscaper["money"]>=500):
+        print("you can hirng a team")
     print(f"You have {landscaper['money']} and are using a {tool['name']}")
     
 def upgrade():
@@ -32,8 +32,8 @@ def upgrade():
         return 0
     if (landscaper["money"]<next_tool["cost"]):
         print("not enough to upgrade")
-        landscaper["money"] -=next_tool["cost"]
-        landscaper["tool"] +=1
+    landscaper["money"] -=next_tool["cost"]
+    landscaper["tool"] +=1
     print(f"You have upgraded to {next_tool}")
         
 def win():
